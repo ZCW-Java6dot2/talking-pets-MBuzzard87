@@ -4,9 +4,11 @@ import javafx.util.Pair;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Scanner;
 
 public class PetList {
     Console console = new Console(System.in, System.out);
+    Scanner scan = new Scanner(System.in);
 
     public Integer howMany() {
         return console.getIntInput("How many pets do you have?");
@@ -22,7 +24,7 @@ public class PetList {
     }
 
     public Integer petType() {
-        return console.getIntInput("Can you tell me what kind of pet he/she is? \n" +
+        return console.getIntInput("Can you tell me what kind of pet this one is? \n" +
                 "Press 1 for Cat\n" +
                 "Press 2 for Dog\n" +
                 "Press 3 for Chicken");
@@ -31,22 +33,24 @@ public class PetList {
     public ArrayList<Pet> petInfo() {
         ArrayList<Pet> pet = new ArrayList<Pet>();
         Integer petNum = howMany();
-
+        String name = "";
         for (int i = 0; i < petNum; i++) {
-            String name = "";
             switch (petType()) {
                 case 1:
-                    name = petName();
+                    petName();
+                    name = scan.nextLine();
                     Cat cat = new Cat(name);
                     pet.add(cat);
                     break;
                 case 2:
-                    name = petName();
+                    petName();
+                    name = scan.nextLine();
                     Dog dog = new Dog(name);
                     pet.add(dog);
                     break;
                 case 3:
-                    name = petName();
+                    petName();
+                    name = scan.nextLine();
                     Chicken chicken = new Chicken(name);
                     pet.add(chicken);
                     break;
